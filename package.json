@@ -18,7 +18,7 @@
     "esm": "^3.2.16",
     "minimist": "^1.2.0",
     "moment": "^2.22.2",
-    "request": "latest",
+    "request": "^2.88.2",
     "twitter": "^1.7.1"
   },
   "author": "François Eoche",
