@@ -35,7 +35,7 @@ function init() {
                 createTweetText(
                     cities.sort((a, b) => {
                         if (a.pollens.length !== b.pollens.length) { return b.pollens.length - a.pollens.length; } else { return b.label < a.label; }
-                    }).map((city) => [city.label, city.pollens.join(', ')]));
+                    }).map((city) => [city.label, city.pollens.filter((pollen) => pollen !== "Graminée").map((pollen) => `${data.POLLENS[pollen]}${pollen}`).join(', ')]));
             }
         });
     });
@@ -45,7 +45,7 @@ init();
 
 function createTweetText(entries) {
     let res = `Info pollens du ${format(new Date(), 'dd/MM/yy')} :\n`;
-    entries.map((entry) => {res += `${entry[0]} : 🔴 ${entry[1]}\n`;});
+    entries.map((entry) => {res += `${entry[0]} : ${entry[1]}\n`;});
     // eslint-disable-next-line
     console.info('res:', res);
     return res;

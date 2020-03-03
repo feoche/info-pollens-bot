@@ -76,7 +76,25 @@ const data = {
             "label": "Vannes",
             "url": "VA56"
         }
-    ]
+    ],
+    POLLENS: {
+        "Armoise": "🌿",
+        "Plantain": "🌿",
+        "Vulpin": "🌾",
+        "Flouve": "🌾",
+        "Fromental": "🌾",
+        "Dactyle": "🌾",
+        "Houlque": "🌾",
+        "Ray-grass": "🌾",
+        "Fléole": "🌾",
+        "Aulne": "🌳",
+        "Bouleau": "🌳",
+        "Cyprès": "🌳",
+        "Noisetier": "🌰",
+        "Frêne": "🌳",
+        "Chêne rouvre": "🌳",
+        "Saule": "🌳"
+    }
 };
 
 export {data};
