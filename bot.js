@@ -1,9 +1,8 @@
 import Twitter from 'twitter';
 import minimist from 'minimist';
-import clipboardy from 'clipboardy';
 import urllib from 'urllib';
 import $ from 'cheerio';
-import moment from 'moment';
+import {format, compareAsc} from 'date-fns';
 import {data} from './data.js';
 
 // Retrieve args
@@ -20,9 +19,8 @@ const twitterAPI = new Twitter({
 
 function init() {
     console.log(
-        `\x1b[96m`, (`[` + new Date().toLocaleTimeString() + `]`).padStart(10),
+        `\x1b[96m`, (`[` + new Date().toLocaleString() + `]`).padStart(10),
         `Started`);
-    // const time = moment().format('YYYYMMDD') + ('00' + (data.HOURS.filter(a => a.time >= moment().get('hours'))[0] || data.HOURS[0]).time).substr(-2, 2);
 
     const cities = [];
 
@@ -34,16 +32,10 @@ function init() {
                 }),
             );
             if (cities.length >= data.CITIES.length) {
-                const pollens = [...new Set(cities.map((city) => city.pollens).flat().sort())];
-                let res = {};
-                pollens.map((pollen) => {
-                    let citiesWithThePollen = [...new Set(cities.filter((city) => city.pollens.includes(pollen)).map((city) => city.label).sort())].join(', ');
-                    res[citiesWithThePollen] = [...(res[citiesWithThePollen] || []), ...[pollen]];
-                });
-                res = Object.keys(res)
-                        .map((key) => res[key]);
-                res = res.sort((a, b) => a.length < b.length || (a.length === b.length && data[a].length < data[b].length));
-                console.log('r', res);
+                createTweetText(
+                    cities.sort((a, b) => {
+                        if (a.pollens.length !== b.pollens.length) { return b.pollens.length - a.pollens.length; } else { return b.label < a.label; }
+                    }).map((city) => [city.label, city.pollens.join(', ')]));
             }
         });
     });
@@ -51,15 +43,19 @@ function init() {
 
 init();
 
+function createTweetText(entries) {
+    let res = `Info pollens du ${format(new Date(), 'dd/MM/yy')} :\n`;
+    entries.map((entry) => {res += `${entry[0]} : 🔴 ${entry[1]}\n`;});
+    // eslint-disable-next-line
+    console.info('res:', res);
+    return res;
+}
+
 function tweet(options) {
     options.status = options.status.substring(0, 280);
     console.info(
         `\x1b[96m`, (`[` + new Date().toLocaleTimeString() + `]`).padStart(10),
         options.status);
-    if (args.test) {
-        clipboardy.writeSync(options.status);
-        clipboardy.readSync();
-    }
     if (!args.test) { // TWEET
         return new Promise((resolve, reject) => {
             twitterAPI.post('statuses/update', options,
@@ -118,7 +114,7 @@ function mergeArrays(arr1, arr2) {
 
 function queryWidget(url) {
     return new Promise((resolve, reject) => {
-        urllib.request(url, (error, data, response) => {
+        urllib.request(url, {timeout: 10000}, (error, data, response) => {
             if (error) {
                 console.error(
                     `\x1b[96m`, (`[` + new Date().toLocaleTimeString() + `]`).padStart(10),
