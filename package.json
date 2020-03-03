@@ -1,0 +1,26 @@
+{
+  "name": "infopollens",
+  "version": "1.0.0",
+  "description": "Twitter bot for pollens info in France",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node -r esm bot.js",
+    "lint": "eslint bot.js",
+    "precommit": "lint"
+  },
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=5"
+  },
+  "dependencies": {
+    "clipboardy": "^1.2.3",
+    "eslint": "^5.2.0",
+    "esm": "^3.2.16",
+    "minimist": "^1.2.0",
+    "moment": "^2.22.2",
+    "request": "latest",
+    "twitter": "^1.7.1"
+  },
+  "author": "François Eoche",
+  "license": "ISC"
+}
