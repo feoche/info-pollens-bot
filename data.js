@@ -1,67 +1,80 @@
 const data = {
-    URLS: [
-        `https://www.alertepollens.org/widget/LA24-LR17-SF23-AN49-CH49-RY85-LA53-LI87-NA44-QU29-RE35-SB22-SN44-VA56-HA76/AN49`,
-    ],
+    URL: "https://www.alertepollens.org/gardens/garden/%ID%/state/",
     CITIES: [
         {
+            "id": 3,
             "label": "Angers",
-            "value": "AN49"
+            "url": "AN49"
         },
         {
+            "id": 16,
             "label": "Antonne",
-            "value": "LA24"
+            "url": "LA24"
         },
         {
+            "id": 13,
             "label": "Cholet",
-            "value": "CH49"
+            "url": "CH49"
         },
         {
+            "id": 12,
             "label": "La Roche-Sur-Yon",
-            "value": "RY85"
+            "url": "RY85"
         },
         {
+            "id": 15,
             "label": "La Rochelle",
-            "value": "LR17"
+            "url": "LR17"
         },
         {
+            "id": 2,
             "label": "Laval",
-            "value": "LA53"
+            "url": "LA53"
         },
         {
+            "id": 8,
             "label": "Le Havre",
-            "value": "HA76"
+            "url": "HA76"
         },
         {
+            "id": 10,
             "label": "Limoges",
-            "value": "LI87"
+            "url": "LI87"
         },
         {
+            "id": 1,
             "label": "Nantes",
-            "value": "NA44"
+            "url": "NA44"
         },
         {
+            "id": 4,
             "label": "Quimper",
-            "value": "QU29"
+            "url": "QU29"
         },
         {
+            "id": 7,
             "label": "Rennes",
-            "value": "RE35"
+            "url": "RE35"
         },
         {
+            "id": 9,
             "label": "Saint-Brieuc",
-            "value": "SB22"
+            "url": "SB22"
         },
         {
+            "id": 6,
             "label": "Saint-Nazaire",
-            "value": "SN44"
+            "url": "SN44"
         },
         {
+            "id": 11,
             "label": "Sainte-Feyre",
-            "value": "SF23"
+            "url": "SF23"
         },
         {
+            "id": 5,
             "label": "Vannes",
-            "value": "VA56"
+            "url": "VA56"
         }
     ]
 };
