@@ -19,7 +19,7 @@
     "date-fns": "^2.10.0",
     "eslint": "^5.2.0",
     "esm": "^3.2.16",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "moment": "^2.22.2",
     "request": "^2.88.2",
     "tiny-json-http": "^7.1.2",
