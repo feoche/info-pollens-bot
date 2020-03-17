@@ -71,7 +71,7 @@ init();
 
 function createTweetText(entries) {
     let res = `${format(new Date(), 'dd/MM/yy')} :\n\n`;
-    entries.map((entry) => {res += `${entry.cities.join(', ')} : ${entry.pollens.map((pollen) => `${data.POLLENS[pollen]}${pollen}`).join(', ')}\n`;});
+    entries.map((entry) => {res += `${entry.cities.join(', ')} : ${entry.pollens.map((pollen) => `${data.POLLENS[pollen] || '🌳'}${pollen}`).join(', ')}\n`;});
 
     // eslint-disable-next-line
     console.info('res:', res);
